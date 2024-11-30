@@ -32,7 +32,7 @@ public class FPSController : MonoBehaviour
 
     bool jumping;
     float lastGroundedTime;
-    bool disabled;
+    public bool disabled;
 
     void Start () {
         cam = Camera.main;
@@ -50,11 +50,6 @@ public class FPSController : MonoBehaviour
     }
 
     void Update () {
-        if (Input.GetKeyDown (KeyCode.P)) {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Debug.Break ();
-        }
         if (Input.GetKeyDown (KeyCode.O)) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

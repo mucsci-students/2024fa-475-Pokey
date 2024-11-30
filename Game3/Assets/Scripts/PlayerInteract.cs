@@ -6,36 +6,32 @@ using TMPro;
 
 public class PlayerInteract : MonoBehaviour
 {
-    FPSController movement;
     public float playerReach = 3f; //distance at which the prompt triggers
     Interactable currentInteractable; //stores current object player is interacting with
-    Inspectable currentInspectable; //ref the inspectable script if need be for this object
-    public Canvas promptCanvas;
-    [SerializeField] TMP_Text promptText;
-    [SerializeField] Canvas inspectBackgroundCanvas;
+    //public Canvas promptCanvas;
+    //[SerializeField] LoadInspect enableInspectScene;
 
 
     // Update is called once per frame
     void Update()
     {   
         CheckInteraction();
-        if(currentInteractable!=null && Input.GetKeyDown(KeyCode.Tab))
+        if(currentInteractable!=null && Input.GetKeyDown(currentInteractable.keybind))
         {   
-            inspectBackgroundCanvas.enabled = true;
+            
 
-            movement = GetComponent<FPSController>();
-            movement.enabled = !movement.enabled;
-
-            currentInteractable.Interact();
-            if (currentInspectable!=null)
+            //currentInteractable.Interact();
+            if (currentInteractable!=null)
             {
-                currentInspectable.enabled = !currentInspectable.enabled; //toggle inspect "scene"
+                //enableInspectScene.inspectableName = currentInteractable.interactableName;
+                //enableInspectScene.enabled = true;//toggle inspect "scene"
+
+                if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    //enableInspectScene.enabled = false;
+                }
             }
 
-        }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            inspectBackgroundCanvas.enabled = false;
         }
 
     }
@@ -49,39 +45,44 @@ public class PlayerInteract : MonoBehaviour
             if (hit.collider.tag == "Interactable")
             {
                 Interactable newInteractable = hit.collider.GetComponent<Interactable>();
-                Inspectable newInspectable = hit.collider.GetComponent<Inspectable>();
-                if (currentInteractable != newInteractable)
+                if (currentInteractable != null && currentInteractable != newInteractable)
                 {
-                    if (currentInteractable != null)
-                    {
-                        currentInteractable.DisableOutline();
-                    }
-                    EnableCurrentInteractable(newInteractable, newInspectable);
+                    currentInteractable.DisableOutline();
+                }
+                if(newInteractable.enabled)
+                {
+                    EnableCurrentInteractable(newInteractable);
+                }
+                else
+                {
+                    DisableCurrentInteractable();
                 }
             }
+            else //object in view but not interactable
+            {
+                DisableCurrentInteractable();
+            }
         }
-        else
+        else //no object in view
         {
             DisableCurrentInteractable();
         }
     }
 
-    void EnableCurrentInteractable(Interactable newInteractable, Inspectable newInspectable)
+    void EnableCurrentInteractable(Interactable newInteractable)
     {
         currentInteractable = newInteractable;
-        currentInspectable = newInspectable;
         currentInteractable.EnableOutline();
-        promptCanvas.enabled = true;
+        UIManager.instance.EnableInteractPrompt(currentInteractable.keybind, currentInteractable.actionTaken, currentInteractable.interactableName);
     }
 
     void DisableCurrentInteractable()
     {
+        UIManager.instance.DisableInteractPrompt();
         if(currentInteractable!=null)
         {
             currentInteractable.DisableOutline();
             currentInteractable = null;
-            currentInspectable = null;
-            promptCanvas.enabled = false;
         }
     }
 }
