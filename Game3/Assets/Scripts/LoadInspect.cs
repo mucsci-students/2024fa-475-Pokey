@@ -13,21 +13,15 @@ public class LoadInspect : MonoBehaviour
     [SerializeField]
     public string inspectableName;
 
-    void Awake()
+    public void LoadLevel(string inspectableName)
     {
-        StartCoroutine(LoadLevel(inspectableName));
+        Debug.Log("Tried Loading: InspectScene"+inspectableName);
+        SceneManager.LoadScene("InspectScene"+inspectableName, LoadSceneMode.Additive);
     }
 
-    IEnumerator LoadLevel(string inspectableName)
+    public void SwitchToLevel(string inspectableName)
     {
-        GameObject originalGameObject = GameObject.Find("Player");
-
-        transition.SetTrigger("Start");
-
-        yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadSceneAsync(inspectableName, LoadSceneMode.Additive);
-        
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(inspectableName));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("InspectScene"+inspectableName));
+        Debug.Log("Tried Switching to:"+SceneManager.GetActiveScene().name);
     }
 }

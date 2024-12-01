@@ -8,8 +8,10 @@ public class PlayerInteract : MonoBehaviour
 {
     public float playerReach = 3f; //distance at which the prompt triggers
     Interactable currentInteractable; //stores current object player is interacting with
-    //public Canvas promptCanvas;
-    //[SerializeField] LoadInspect enableInspectScene;
+    
+    [SerializeField] LoadInspect loadInspect;
+
+    public bool requireInput = false;
 
 
     // Update is called once per frame
@@ -18,17 +20,20 @@ public class PlayerInteract : MonoBehaviour
         CheckInteraction();
         if(currentInteractable!=null && Input.GetKeyDown(currentInteractable.keybind))
         {   
-            
-
-            //currentInteractable.Interact();
+            if(requireInput)
+            {
+                FPSController movement = GetComponent<FPSController>();
+                movement.enabled = false;
+            }
             if (currentInteractable!=null)
             {
-                //enableInspectScene.inspectableName = currentInteractable.interactableName;
-                //enableInspectScene.enabled = true;//toggle inspect "scene"
+                loadInspect.inspectableName = currentInteractable.interactableName;
+                loadInspect.LoadLevel(loadInspect.inspectableName);
+                loadInspect.SwitchToLevel(loadInspect.inspectableName);
 
-                if(Input.GetKeyDown(KeyCode.Escape))
+                if(Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    //enableInspectScene.enabled = false;
+                    loadInspect.enabled = false;
                 }
             }
 
