@@ -20,7 +20,7 @@ m_EmbeddedPackageManifests:
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: /Users/chayse/Downloads/CSCI475/2024fa-475-Pokey/Game3/Packages
-m_EditorVersion: 2022.3.43f1 (85497d293fa1)
+m_EditorVersion: 2022.3.41f1 (0f988161febf)
 m_ResolvedPackages:
 - packageId: com.unity.collab-proxy@2.5.2
   testable: 0
@@ -119,10 +119,12 @@ m_ResolvedPackages:
     - 2.4.4
     - 2.5.1
     - 2.5.2
+    - 2.6.0
     compatible:
     - 2.4.4
     - 2.5.1
     - 2.5.2
+    - 2.6.0
     recommended: 2.4.4
     deprecated: []
   dependencies: []
@@ -3520,4 +3522,4 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-m_BuiltInPackagesHash: 463cd7c3d3028ae55c3f682d531a4209aca9b4f3
+m_BuiltInPackagesHash: 447c529ded2afe09b824ea0307935623cfbe191d

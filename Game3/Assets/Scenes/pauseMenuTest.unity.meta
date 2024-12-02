@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Game3/Assets/Scenes/pauseMenuTest.unity.meta
 guid: 2f0f57905832947ce9b09a254dbfb983
+========
+guid: 28cafdc405bbe364ea92ee26841c7a5c
+>>>>>>>> c6e4fc4d359881089c3b290bf766a7e7af1204b2:Game3/Assets/Scenes/Outside View.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

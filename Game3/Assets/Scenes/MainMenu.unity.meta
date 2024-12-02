@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Game3/Assets/Scenes/MainMenu.unity.meta
 guid: b3c677ed3bbd54b82b4afcff2a37ba42
+========
+guid: 4bc803aaa3186ee4f8ff4cfe194017e0
+>>>>>>>> c6e4fc4d359881089c3b290bf766a7e7af1204b2:Game3/Assets/Scenes/InspectSceneRadio.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
