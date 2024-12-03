@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzle Scene.unity
     guid: 751e7ac4b22c78b4aa4a2a95995b0f56
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 84337b10d54bb41eeae2503c5719b233
+  - enabled: 1
+    path: Assets/Scenes/pauseMenuTest.unity
+    guid: bfa076182f7e9479ab0974ac9a325f85
   m_configObjects: {}
