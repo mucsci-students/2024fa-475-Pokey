@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 
 public class PlayerInteract : MonoBehaviour
@@ -25,6 +26,10 @@ public class PlayerInteract : MonoBehaviour
                 FPSController movement = GetComponent<FPSController>();
                 movement.enabled = false;
             }
+            else{
+                FPSController movement = GetComponent<FPSController>();
+                movement.enabled = false;
+            }
             if (currentInteractable!=null)
             {
                 loadInspect.inspectableName = currentInteractable.interactableName;
@@ -33,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
 
                 if(Input.GetKeyDown(KeyCode.Alpha2))
                 {
+                    requireInput = false;
                     loadInspect.enabled = false;
                 }
             }
@@ -56,6 +62,7 @@ public class PlayerInteract : MonoBehaviour
                 }
                 if(newInteractable.enabled)
                 {
+                    requireInput = true;
                     EnableCurrentInteractable(newInteractable);
                 }
                 else

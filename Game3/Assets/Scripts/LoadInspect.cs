@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadInspect : MonoBehaviour
 {
     public Animator transition;
+    public Camera inspectCam;
 
     public float transitionTime = 1f;
 

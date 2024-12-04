@@ -16,7 +16,7 @@ public class FPSController : MonoBehaviour
     public float rotationSmoothTime = 0.1f;
 
     CharacterController controller;
-    Camera cam;
+    public Camera cam;
     public float yaw;
     public float pitch;
     float smoothYaw;
