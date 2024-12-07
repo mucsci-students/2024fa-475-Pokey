@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
    // Load the game scene
     public void PlayGame()
     {
-        SceneManager.LoadScene("pauseMenuTest"); // replace with the actual scene name
+        SceneManager.LoadScene("First Level"); // replace with the actual scene name
     }
 
     // Show the controls menu
