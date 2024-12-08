@@ -30,8 +30,8 @@ public class RadioPuzzle : MonoBehaviour
     [SerializeField] 
     float[] solutions;
 
-    [SerializeField]
-    KeyCode powerButton = KeyCode.Space;
+    //[SerializeField]
+    //KeyCode powerButton = KeyCode.Space;
 
 
     [SerializeField]

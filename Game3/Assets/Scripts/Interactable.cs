@@ -33,6 +33,7 @@ public class Interactable : MonoBehaviour
 
     public void DisableOutline()
     {
+        Debug.Log($"Disabling outline on {gameObject.name}");
         outline.enabled = false;
     }
 
