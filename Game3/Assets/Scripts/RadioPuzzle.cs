@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
+
 
 public class RadioPuzzle : MonoBehaviour
 {
@@ -10,11 +12,10 @@ public class RadioPuzzle : MonoBehaviour
     public float maxFrequency = 108.0f;
     public float tinyStep = 0.1f; // Step size for tuning
     public float bigStep = 1f; // Step size for tuning
-    public float targetFrequency = 95.3f; // Correct frequency
-    public float tolerance = 0.2f; // Allow slight inaccuracy
+    public float targetFrequency = 105.5f; // Correct frequency
+    public float tolerance = 0.0f; // Originally a var to allow slight inaccuracy
 
     private float currentFrequency = 88.0f;
-
     public TextMeshPro currentFText;
     public float CurrentF{
         get{return currentFrequency;}
@@ -49,6 +50,14 @@ public class RadioPuzzle : MonoBehaviour
     public void Update()
     {
         // Rotate dial and change frequency
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.UnloadSceneAsync("InspectSceneRadio");
+            FPSController movement = GetComponent<FPSController>();
+            movement.enabled = true;
+            PlayerInteract interact = GetComponent<PlayerInteract>();
+            interact.inScene = 0;
+        }
         if (Input.GetKeyDown(fineraiseFrequencyButton)) AdjustFrequency(tinyStep);
         if (Input.GetKeyDown(finelowerFrequencyButton)) AdjustFrequency(-tinyStep);
         if (Input.GetKeyDown(raiseFrequencyButton)) AdjustFrequency(bigStep);
@@ -71,12 +80,7 @@ public class RadioPuzzle : MonoBehaviour
         if (Mathf.Abs(currentFrequency - targetFrequency) < tolerance)
         {
             Silence();
-            if(currentFrequency == solutions[0])
-                radioTunes[1].Play();
-            else if(currentFrequency == solutions[1])
-                radioTunes[2].Play();
-            else if(currentFrequency == solutions[2])
-                radioTunes[3].Play();
+            radioTunes[1].Play();
             
         }
         else

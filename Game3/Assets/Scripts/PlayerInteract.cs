@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerInteract : MonoBehaviour
 {
     public float playerReach = 3f; //distance at which the prompt triggers
     Interactable currentInteractable; //stores current object player is interacting with
+    public int inScene = 0;
     
     [SerializeField] LoadInspect loadInspect;
 
@@ -19,30 +21,22 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {   
         CheckInteraction();
-        if(currentInteractable!=null && Input.GetKeyDown(currentInteractable.keybind))
+        if(currentInteractable!=null && Input.GetKeyDown(currentInteractable.keybind) && inScene==0)
         {   
-            if(requireInput)
-            {
-                FPSController movement = GetComponent<FPSController>();
-                movement.enabled = false;
-            }
-            else{
-                FPSController movement = GetComponent<FPSController>();
-                movement.enabled = false;
-            }
+            inScene = 1;
+
             if (currentInteractable!=null)
             {
+            FPSController movement = GetComponent<FPSController>();
+            movement.enabled = false;
                 loadInspect.inspectableName = currentInteractable.interactableName;
-                loadInspect.LoadLevel(loadInspect.inspectableName);
-                loadInspect.SwitchToLevel(loadInspect.inspectableName);
-
-                if(Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    requireInput = false;
-                    loadInspect.enabled = false;
-                }
+                loadInspect.AddInspectScene(loadInspect.inspectableName);
             }
 
+        }
+        else{
+            FPSController movement = GetComponent<FPSController>();
+            movement.enabled = true;
         }
 
     }

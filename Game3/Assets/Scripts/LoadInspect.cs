@@ -13,16 +13,21 @@ public class LoadInspect : MonoBehaviour
 
     [SerializeField]
     public string inspectableName;
+    
+    public string ogScene;
 
-    public void LoadLevel(string inspectableName)
+    public void AddInspectScene(string inspectableName)
     {
+        ogScene = SceneManager.GetActiveScene().name;
         Debug.Log("Tried Loading: InspectScene"+inspectableName);
-        SceneManager.LoadScene("InspectScene"+inspectableName, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("InspectScene"+inspectableName, LoadSceneMode.Additive);
+        SwitchToInspect(inspectableName);
     }
 
-    public void SwitchToLevel(string inspectableName)
+    public void SwitchToInspect(string inspectableName)
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("InspectScene"+inspectableName));
         Debug.Log("Tried Switching to:"+SceneManager.GetActiveScene().name);
     }
+
 }
