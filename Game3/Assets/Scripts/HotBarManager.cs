@@ -74,4 +74,29 @@ public class HotbarManager : MonoBehaviour
 
         return sceneName == "First Level";
     }
+    
+    public bool HasItem(string itemName)
+{
+    foreach (Item item in hotbarItems)
+    {
+        if (item != null && item.itemName == itemName)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+public void RemoveItemFromHotbarByName(string itemName)
+{
+    for (int i = 0; i < hotbarItems.Length; i++)
+    {
+        if (hotbarItems[i] != null && hotbarItems[i].itemName == itemName)
+        {
+            hotbarItems[i] = null;
+            UpdateHotbarUI();
+            return;
+        }
+    }
+}
 }
