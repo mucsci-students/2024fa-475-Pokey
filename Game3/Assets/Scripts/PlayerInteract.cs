@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     public float playerReach = 3f; //distance at which the prompt triggers
     Interactable currentInteractable; //stores current object player is interacting with
     public int inScene = 0;
+     [SerializeField] private HotbarManager hotbarManager;  // Reference to HotbarManager
     
     [SerializeField] LoadInspect loadInspect;
 
@@ -21,23 +22,43 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {   
         CheckInteraction();
-        if(currentInteractable!=null && Input.GetKeyDown(currentInteractable.keybind) && inScene==0)
-        {   
-            inScene = 1;
+        // if(currentInteractable!=null && Input.GetKeyDown(currentInteractable.keybind) && inScene==0)
+        // {   
+        //     inScene = 1;
 
-            if (currentInteractable!=null)
+        //     if (currentInteractable!=null)
+        //     {
+        //     FPSController movement = GetComponent<FPSController>();
+        //     movement.enabled = false;
+        //         loadInspect.inspectableName = currentInteractable.interactableName;
+        //         loadInspect.AddInspectScene(loadInspect.inspectableName);
+        //     }
+
+        // }
+        // else{
+        //     FPSController movement = GetComponent<FPSController>();
+        //     movement.enabled = true;
+        // }
+        if (currentInteractable != null && Input.GetKeyDown(currentInteractable.keybind))
+    {
+        // Perform the interaction action
+        currentInteractable.Interact();
+
+        // Check if the interactable is the flashlight
+        if (currentInteractable.gameObject.CompareTag("Interactable"))
+        {
+            Flashlight flashlight = currentInteractable.GetComponent<Flashlight>();
+            if (flashlight != null) // If it has the Flashlight script attached
             {
-            FPSController movement = GetComponent<FPSController>();
-            movement.enabled = false;
-                loadInspect.inspectableName = currentInteractable.interactableName;
-                loadInspect.AddInspectScene(loadInspect.inspectableName);
+                Item flashlightItem = currentInteractable.GetComponent<Item>();  // Get the Item component of the flashlight
+                if (flashlightItem != null)
+                {
+                    hotbarManager.AddItemToHotbar(flashlightItem);  // Add the flashlight to the inventory
+                    Debug.Log("Flashlight picked up!");
+                }
             }
-
         }
-        else{
-            FPSController movement = GetComponent<FPSController>();
-            movement.enabled = true;
-        }
+    }
 
     }
 

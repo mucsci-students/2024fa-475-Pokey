@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HotbarManager : MonoBehaviour
 {
@@ -7,11 +8,19 @@ public class HotbarManager : MonoBehaviour
     public Sprite defaultSlotSprite; // Sprite for empty slots
     private Item[] hotbarItems; // Array to store the items in the hotbar
 
+    public Item startingKey; // The key item the player starts with (only in the first level)
+
     private void Start()
     {
         Debug.Log($"SlotImages array length: {slotImages.Length}");
         hotbarItems = new Item[slotImages.Length]; // Initialize the hotbar item array
         Debug.Log($"HotbarItems array length: {hotbarItems.Length}");
+
+         // Check if the current scene is the first level
+        if (IsFirstLevel() && startingKey != null)
+        {
+            AddItemToHotbar(startingKey);
+        }
 
         UpdateHotbarUI();
     }
@@ -57,5 +66,12 @@ public class HotbarManager : MonoBehaviour
                 slotImages[i].sprite = defaultSlotSprite; // Set to default empty slot sprite
             }
         }
+    }
+     private bool IsFirstLevel()
+    {
+        // Check by scene name 
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        return sceneName == "First Level";
     }
 }
