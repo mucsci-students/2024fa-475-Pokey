@@ -4572,6 +4572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596788136953101900}
   - component: {fileID: 8394483444467015279}
+  - component: {fileID: 1622548965359966605}
   m_Layer: 0
   m_Name: Radio 1
   m_TagString: Untagged
@@ -4627,6 +4628,27 @@ MonoBehaviour:
   fineraiseFrequencyButton: 275
   lowerFrequencyButton: 274
   raiseFrequencyButton: 273
+--- !u!65 &1622548965359966605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895741968673306195}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6935163225394768612
 GameObject:
   m_ObjectHideFlags: 0

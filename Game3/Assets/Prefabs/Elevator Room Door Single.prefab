@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4416230882334019382}
+  - component: {fileID: 5973136617216595354}
   m_Layer: 0
   m_Name: Elevator Room Door Single
   m_TagString: Untagged
@@ -247,9 +248,29 @@ Transform:
   - {fileID: 1503813308705504692}
   - {fileID: 5375025043409665073}
   - {fileID: 3063939931665667725}
-  - {fileID: 366748166444561640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5973136617216595354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883760694412865933}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 9.7, z: 5.9}
+  m_Center: {x: -2.9, y: 5.1, z: -3.15}
 --- !u!1 &3165017247111044003
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +408,7 @@ Transform:
   - {fileID: 7865092467272695226}
   - {fileID: 121251559960235911}
   - {fileID: 6201518369743022599}
+  - {fileID: 366748166444561640}
   m_Father: {fileID: 4416230882334019382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3743858179516276789
@@ -1150,15 +1172,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8610191434743163567}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.896, y: 5.51, z: -0.4319992}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.15799999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7328751761829711823}
   - {fileID: 6687085873595822978}
   - {fileID: 6517817466471497848}
-  m_Father: {fileID: 4416230882334019382}
+  m_Father: {fileID: 3063939931665667725}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8668070008220240906
 GameObject:
