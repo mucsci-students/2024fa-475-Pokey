@@ -33,13 +33,11 @@ public class Interactable : MonoBehaviour
 
     public void DisableOutline()
     {
-        Debug.Log("Disabling outline");
         outline.enabled = false;
     }
 
     public void EnableOutline()
     {
-        Debug.Log("Enabling outline");
         outline.enabled = true;
     }
 }

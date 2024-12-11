@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DoorAction : MonoBehaviour
 {
-    public string requiredKeyName; // Name of the key needed to open the door
+    public string requiredKeyName; // Leave empty for doors that don't require a key
     public Animator doorAnimator;  // Animator for the door
     public GameObject doorObject;  // Door GameObject to manipulate (optional)
 
@@ -11,24 +11,37 @@ public class DoorAction : MonoBehaviour
         // Get the player's inventory
         HotbarManager hotbar = FindObjectOfType<HotbarManager>();
 
-        if (hotbar != null && hotbar.HasItem(requiredKeyName))
+        // Check if the door requires a key
+        if (!string.IsNullOrEmpty(requiredKeyName))
         {
-            Debug.Log("Door opened!");
-            
-            if (doorAnimator != null)
+            if (hotbar != null && hotbar.HasItem(requiredKeyName))
             {
-                doorAnimator.SetTrigger("Open");
+                Debug.Log("Door opened!");
+                Open();
+                hotbar.RemoveItemFromHotbarByName(requiredKeyName);
             }
-            else if (doorObject != null)
+            else
             {
-                doorObject.SetActive(false); // Optional: Hide or disable the door
+                Debug.Log("You need the key to open this door.");
             }
-
-            hotbar.RemoveItemFromHotbarByName(requiredKeyName);
         }
         else
         {
-            Debug.Log("You need the key to open this door.");
+            // No key required
+            Debug.Log("Door opened without a key!");
+            Open();
+        }
+    }
+
+    private void Open()
+    {
+        if (doorAnimator != null)
+        {
+            doorAnimator.SetTrigger("Open");
+        }
+        else if (doorObject != null)
+        {
+            doorObject.SetActive(false); // Optional: Hide or disable the door
         }
     }
 }
