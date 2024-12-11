@@ -25,6 +25,7 @@ public class ItemInteractable : MonoBehaviour
         // Add the item to the hotbar
         if (hotbarManager != null)
         {
+            Debug.Log("Hotbarmanager is not null");
             hotbarManager.AddItemToHotbar(item); // Add the item to the hotbar
         }
 
