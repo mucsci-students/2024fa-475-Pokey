@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
-    public float walkSpeed = 3;
-    public float runSpeed = 6;
+    public float walkSpeed = 6;
+    public float runSpeed = 12;
     public float smoothMoveTime = 0.1f;
     public float jumpForce = 8;
     public float gravity = 18;
@@ -34,6 +34,13 @@ public class FPSController : MonoBehaviour
     float lastGroundedTime;
     public bool disabled;
 
+    public AudioSource[] footsteps;
+    float footstepTimer = 0f;
+    private float footstepInterval = .4f; // third of a second between each footstep sound
+    private bool isMovingFastEnough = false; // Whether player is moving fast enough for footstep sounds
+
+
+
     void Start () {
         cam = Camera.main;
         if (lockCursor) {
@@ -56,6 +63,8 @@ public class FPSController : MonoBehaviour
             disabled = !disabled;
         }
 
+
+
         if (disabled) {
             return;
         }
@@ -71,7 +80,7 @@ public class FPSController : MonoBehaviour
 
         verticalVelocity -= gravity * Time.deltaTime;
         velocity = new Vector3 (velocity.x, verticalVelocity, velocity.z);
-
+        isMovingFastEnough = input.magnitude > 0.1f;
         var flags = controller.Move (velocity * Time.deltaTime);
         if (flags == CollisionFlags.Below) {
             jumping = false;
@@ -106,7 +115,21 @@ public class FPSController : MonoBehaviour
         transform.eulerAngles = Vector3.up * smoothYaw;
         cam.transform.localEulerAngles = Vector3.right * smoothPitch;
 
+
+        if (isMovingFastEnough)
+        {
+            footstepTimer += Time.deltaTime;
+            if (footstepTimer >= footstepInterval)
+            {
+                playStepSound();
+                footstepTimer = 0f; // Reset the timer
+            }
+        }
     }
 
+    private void playStepSound(){
+        int randomFootstep = UnityEngine.Random.Range(0,10);
+        footsteps[randomFootstep].Play();
+    }
 
 }
