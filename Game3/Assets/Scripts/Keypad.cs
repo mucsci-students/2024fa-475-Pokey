@@ -17,13 +17,15 @@ public class Keypad : MonoBehaviour
 
 
     public Text textOB;
-    public string answer = "12345";
+    public string answer = "4372";
 
     public AudioSource button;
     public AudioSource correct;
     public AudioSource wrong;
 
     public bool animate;
+
+    public bool isCorrect;
 
 
     void Start()
@@ -43,14 +45,16 @@ public class Keypad : MonoBehaviour
     {
         if (textOB.text == answer)
         {
-            correct.Play();
+            //correct.Play();
             textOB.text = "Right";
+            isCorrect = true;
 
         }
         else
         {
-            wrong.Play();
+            //wrong.Play();
             textOB.text = "Wrong";
+            isCorrect = false;
         }
 
 
@@ -67,8 +71,9 @@ public class Keypad : MonoBehaviour
     public void Exit()
     {
         keypadOB.SetActive(false);
-        inv.SetActive(true);
+        //inv.SetActive(true);
         hud.SetActive(true);
+        Cursor.visible = false;
         player.GetComponent<FPSController>().enabled = true;
     }
 
@@ -91,6 +96,13 @@ public class Keypad : MonoBehaviour
         }
 
     }
+    public void ShowKeypad()
+{
+    player.GetComponent<FPSController>().enabled = false;
+    keypadOB.SetActive(true);
+    Cursor.lockState = CursorLockMode.None;
+Cursor.visible = true;
+}
 
 
 }

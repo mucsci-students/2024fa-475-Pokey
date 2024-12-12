@@ -5,6 +5,7 @@ public class DoorAction : MonoBehaviour
     public string requiredKeyName; // Leave empty for doors that don't require a key
     public Animator doorAnimator;  // Animator for the door
     public GameObject doorObject;  // Door GameObject to manipulate (optional)
+    public Keypad keypad;  
 
     public void OpenDoor()
     {
@@ -23,6 +24,14 @@ public class DoorAction : MonoBehaviour
             else
             {
                 Debug.Log("You need the key to open this door.");
+            }
+        } else if (keypad != null) {
+            if (keypad.isCorrect) {
+                Debug.Log("Door opened!");
+                Open();
+            }
+            else {
+                Debug.Log("You need the right passcode");
             }
         }
         else

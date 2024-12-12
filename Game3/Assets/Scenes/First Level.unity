@@ -3178,6 +3178,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6895741968673306195, guid: 72c7cb95ad5b89b43a373aa0b6d8e1c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 975737381}
+    - targetCorrespondingSourceObject: {fileID: 6895741968673306195, guid: 72c7cb95ad5b89b43a373aa0b6d8e1c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 975737383}
     - targetCorrespondingSourceObject: {fileID: 5831037784279854194, guid: 72c7cb95ad5b89b43a373aa0b6d8e1c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -5115,7 +5118,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 975737383}
+        m_TargetAssemblyTypeName: RadioInteraction, Assembly-CSharp
+        m_MethodName: InspectRadio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   keybind: 9
   actionTaken: Inspect
   interactableName: radio
@@ -5137,6 +5152,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &975737383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975737380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6e6c642aaca4f5abb5a7be139cffa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectSceneName: InspectSceneRadio
 --- !u!1 &1030920529 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 827273651475970416, guid: 294a1e7b2b0be9b4085e6471e654894f, type: 3}
