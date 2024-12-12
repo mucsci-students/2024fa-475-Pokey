@@ -19,6 +19,8 @@ public class MoveRuller : MonoBehaviour
 
     private bool _isActveEmission = false;
 
+    public PadlockInteraction padlock;
+
 
     void Awake()
     {
@@ -37,8 +39,10 @@ public class MoveRuller : MonoBehaviour
     }
     void Update()
     {
+        if (padlock.interacting) {
         MoveRulles();
         RotateRullers();
+        }
         _lockPassword.Password();
     }
 

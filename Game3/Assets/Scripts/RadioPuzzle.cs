@@ -25,6 +25,7 @@ public class RadioPuzzle : MonoBehaviour
         }
     }
 
+public DoorAction door;
     public GameObject doorToUnlock; // Door that unlocks
     public AudioSource[] radioTunes; // Plays audio when tuned
     
@@ -93,7 +94,9 @@ public class RadioPuzzle : MonoBehaviour
     void CheckFrequency()
     {
         //check for delay here
-
+if (currentFrequency == targetFrequency) {
+    UnlockDoor();
+}
         if (Mathf.Abs(currentFrequency - targetFrequency) < tolerance)
         {
             UnlockDoor();
@@ -105,6 +108,7 @@ public class RadioPuzzle : MonoBehaviour
         if (doorToUnlock != null)
         {
             doorToUnlock.SetActive(false); // Simulate unlocking
+            door.Open();
             Debug.Log("Door unlocked!");
         }
     }

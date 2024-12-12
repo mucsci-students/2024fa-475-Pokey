@@ -7,7 +7,9 @@ public class PadLockPassword : MonoBehaviour
 {
     MoveRuller _moveRull;
 
-    public int[] _numberPassword = {0,0,0,0};
+    public int[] _numberPassword = {5,9,4,7};
+
+    public DoorAction handle;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class PadLockPassword : MonoBehaviour
                 _moveRull._rullers[i].GetComponent<PadLockEmissionColor>()._isSelect = false;
                 _moveRull._rullers[i].GetComponent<PadLockEmissionColor>().BlinkingMaterial();
             }
+            handle.OpenDoor();
 
         }
     }

@@ -42,7 +42,7 @@ public class DoorAction : MonoBehaviour
         }
     }
 
-    private void Open()
+    public void Open()
     {
         if (doorAnimator != null)
         {

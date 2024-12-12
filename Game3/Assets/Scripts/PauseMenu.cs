@@ -65,6 +65,7 @@ public class PauseMenu : MonoBehaviour
     // shows settings 
      public void OpenSettings()
     {
+        Debug.Log("Opening settings");
         pauseMenuUI.SetActive(false); // Hide the pause menu
         settingsMenuUI.SetActive(true); // Show the options menu
     }
@@ -80,5 +81,8 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame() {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+    public void theEnd() {
+        SceneManager.LoadScene("End");
     }
 }

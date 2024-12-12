@@ -82,4 +82,10 @@ void Awake()
         PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
         PlayerPrefs.SetFloat("sfxVolume", sfxVolumeSlider.value);
     }
+    public void PlayMusic(AudioClip newMusic)
+{
+    if (musicAudioSource.clip == newMusic) return; // Avoid restarting the same music
+    musicAudioSource.clip = newMusic;
+    musicAudioSource.Play();
+}
 }
